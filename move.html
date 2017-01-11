@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+*{
+  margin:0;
+  padding:0;
+}
+#demo{
+	border: 1px solid #f00;
+	margin: 50px;
+  position: relative;
+  height: 80px;
+  overflow:hidden;
+}
+#demo ul{
+    
+  }
+#demo li{
+	padding: 0 10px;
+    height: 20px;
+    line-height: 20px;
+  }
+</style>
+<body>
+	<div id="demo">
+	  <ul>
+		<li>01</li>
+		<li>02</li>
+		<li>03</li>
+		<li>04</li>
+		<li>05</li>
+		<li>06</li>
+		<li>07</li>
+		<li>08</li>
+		<li>09</li>
+		<li>10</li>
+		<li>11</li>
+		<li>12</li>
+		<li>13</li>
+		<li>14</li>
+		<li>15</li>
+		<li>16</li>
+		<li>17</li>
+	  </ul>
+	</div>
+	
+<script src="http://mfile04.miyabaobei.com/resources/scripts/m/zepto.js"></script>
+<script type="text/javascript">
+$(function() {
+	var $div = $('#demo');
+	var $ul = $div.find('ul');
+	var len = $ul.children().length;
+	var time = len * 700;
+	var height = $ul.height();
+	var newheight = $div.height();
+
+	$temp = $ul.children().clone(true);
+	$ul.append($temp);
+
+	function move() {
+		$ul.animate({
+			translate3d: '0, -'+height+'px,0'
+		}, time, 'linear', function() {
+			$ul.css('transform', 'translate3d(0,0,0)')
+			move();
+		})
+
+	}
+	move();
+
+})
+</script>
+</body>
+</html>
